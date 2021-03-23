@@ -1,0 +1,30 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  chats: ChatsResult
+  chat(chatId: ID!): ChatResult!
+}
+
+type Mutation {
+  sendMessage(receiverId: ID!, message: String!): ChatResult!
+}
+
+type ChatsResult {
+  success: Boolean!
+  errors: [String]
+  chats: [Chat]
+}
+
+type ChatResult {
+  success: Boolean!
+  errors: [String]
+  chat: Chat!
+}
+
+type Chat {
+  id: ID!
+  name: String!
+}
